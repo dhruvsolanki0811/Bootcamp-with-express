@@ -6,6 +6,8 @@ const app = express()
 const port = process.env.PORT || 5000 
 dotenv.config({path:'./config/config.env'})
 const bootcamps=require('./routes/bootcamps')
+const courses=require('./routes/courses')
+
 var morgan = require('morgan')
 var conn = require('./config/db')
 const errorHandler = require('./error/error')
@@ -19,6 +21,7 @@ if(process.env.NODE_ENV==='development'){
 conn();
 
 app.use('/api/v1/bootcamps',bootcamps)
+app.use('/api/v1/courses',courses)
 
 app.use(errorHandler)
 const server=app.listen(port, () => console.log(`Server running in ${process.env.NODE_ENV} listening on port ${port}!`.yellow.bold))
