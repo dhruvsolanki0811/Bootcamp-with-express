@@ -57,7 +57,7 @@ advanceResults    //Copying query
     }
     const results= await query
     res.advanceResults={success:true,count:results.length,pagination,data:results}
-    // console.log(res.advanceResults)
+    console.log(res.advanceResults)
     next()
 }
 module.exports=advanceResults;

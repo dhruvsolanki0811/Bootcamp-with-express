@@ -1,5 +1,6 @@
 const express = require("express");
 const coursesRouter = require("./courses");
+const reviewRouter = require("./review");
 
 const router = express.Router();
 
@@ -30,6 +31,8 @@ router
 
   router.route('/radius/:zipcode/:distance').get(radiusSearch)
   router.use('/:bootcampId/courses',coursesRouter)
+  router.use('/:bootcampId/reviews',reviewRouter)
+
   router
   .route('/:id/photo')
   .put(protect,authorize('publisher','admin'),bootcampPhotoUpdate);
